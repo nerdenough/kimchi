@@ -1,6 +1,8 @@
 package actions
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"github.com/bwmarrin/discordgo"
+)
 
 // These keys are the available action types for the bot.
 const (
@@ -8,6 +10,13 @@ const (
 	KeyEventRemove = "event.remove"
 	KeyEventList   = "event.list"
 )
+
+// PatternMatchType are the regex tests used to associate a message with an action.
+var PatternMatchType = map[string]string{
+	KeyEventCreate: "(create|make|new|add|schedule).+?event",
+	KeyEventRemove: "(remove|delete|cancel).+?event",
+	KeyEventList:   "(list|show|what|when).+?event",
+}
 
 // ActionGenerator represents a function that can generate an action from a message.
 type ActionGenerator func() (Action, error)

@@ -60,7 +60,7 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Determine the action type
-	typ, err := message.DecodeActionType(m)
+	typ, err := message.DecodeActionType(m, actions.PatternMatchType)
 	if err != nil {
 		s.ChannelMessageSend(m.ChannelID, "I'm sorry, I don't understand that command.")
 		return
