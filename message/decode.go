@@ -11,7 +11,7 @@ import (
 
 // These patterns are the regex tests used to associate a message with an action.
 var patternMatchType = map[string]string{
-	actions.KeyEventCreate: "(create|make|new|add).+?event",
+	actions.KeyEventCreate: "(create|make|new|add|schedule).+?event",
 	actions.KeyEventRemove: "(remove|delete|cancel).+?event",
 	actions.KeyEventList:   "(list|show|what|when).+?event",
 }
