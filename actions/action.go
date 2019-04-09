@@ -1,8 +1,6 @@
 package actions
 
-import (
-	"github.com/bwmarrin/discordgo"
-)
+import "github.com/bwmarrin/discordgo"
 
 // These keys are the available action types for the bot.
 const (
@@ -22,7 +20,7 @@ var generatorLookup = map[string]ActionGenerator{
 
 // Action represents a single runnable action.
 type Action interface {
-	Process(m *discordgo.MessageCreate) error
+	Process(s *discordgo.Session, m *discordgo.MessageCreate) error
 }
 
 // NewAction returns a new action based on the specified type.

@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	// Discord bot token should be provided as an environment variable
+	// Discord bot token should be provided as an environment variable.
 	token := os.Getenv("BOT_TOKEN")
 	if token == "" {
 		fmt.Printf("Missing BOT_TOKEN environment variable.\n")
@@ -74,5 +74,5 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Process the action
-	action.Process(m)
+	action.Process(s, m)
 }

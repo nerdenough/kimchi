@@ -1,6 +1,8 @@
 package actions
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"github.com/bwmarrin/discordgo"
+)
 
 // EventCreate represents the event create action.
 type EventCreate struct{}
@@ -11,6 +13,7 @@ func NewEventCreate() (Action, error) {
 }
 
 // Process executes the event create action.
-func (action EventCreate) Process(m *discordgo.MessageCreate) error {
+func (action EventCreate) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
+	s.ChannelMessageSend(m.ChannelID, "Creating a new event")
 	return nil
 }
