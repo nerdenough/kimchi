@@ -16,7 +16,7 @@ func NewSay() (Action, error) {
 
 // Process executes the say action.
 func (action Say) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	reg := regexp.MustCompile(PatternMatchType["say"])
+	reg := regexp.MustCompile(PatternMatchType["misc.say"])
 	msg := reg.ReplaceAllString(m.Content, "")
 	if msg != "" {
 		s.ChannelMessageSend(m.ChannelID, msg)
