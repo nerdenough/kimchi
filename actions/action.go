@@ -9,6 +9,7 @@ const (
 	KeyEventCreate = "event.create"
 	KeyEventRemove = "event.remove"
 	KeyEventList   = "event.list"
+	KeySay         = "say"
 )
 
 // PatternMatchType are the regex tests used to associate a message with an action.
@@ -16,6 +17,7 @@ var PatternMatchType = map[string]string{
 	KeyEventCreate: "(create|make|new|add|schedule).+?event",
 	KeyEventRemove: "(remove|delete|cancel).+?event",
 	KeyEventList:   "(list|show|what|when).+?event",
+	KeySay:         "^!kimchi say ",
 }
 
 // ActionGenerator represents a function that can generate an action from a message.
@@ -25,6 +27,7 @@ var generatorLookup = map[string]ActionGenerator{
 	KeyEventCreate: NewEventCreate,
 	KeyEventRemove: NewEventRemove,
 	KeyEventList:   NewEventList,
+	KeySay:         NewSay,
 }
 
 // Action represents a single runnable action.
