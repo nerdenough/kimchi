@@ -15,7 +15,6 @@ func NewLostTheGame() (Action, error) {
 }
 
 // Process executes the lost the game action.
-func (action LostTheGame) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("I lost the game. Screw you, <@%s>!", m.Author.ID))
-	return nil
+func (action LostTheGame) Process(s *discordgo.Session, m *discordgo.MessageCreate) (string, error) {
+	return fmt.Sprintf("I lost the game. Screw you, <@%s>!", m.Author.ID), nil
 }

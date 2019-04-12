@@ -30,7 +30,7 @@ func main() {
 	}
 
 	// Handlers
-	discord.AddHandler(messageHandler)
+	discord.AddHandler(messageCreateHandler)
 
 	// Open the connection
 	err = discord.Open()
@@ -48,7 +48,7 @@ func main() {
 	discord.Close()
 }
 
-func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
+func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Ignore messages by the bot
 	if m.Author.ID == s.State.User.ID {
 		return
@@ -74,5 +74,15 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Process the action
-	action.Process(s, m)
+	resp, err := action.Process(s, m)
+	if err != nil {
+		fmt.Printf("Error processing action: %s\n", err.Error())
+		s.ChannelMessageSend(m.ChannelID, "Sorry, something went wrong.")
+		return
+	}
+
+	// Ensure we have a response for the bot to say
+	if resp != "" {
+		s.ChannelMessageSend(m.ChannelID, resp)
+	}
 }

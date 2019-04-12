@@ -11,7 +11,6 @@ func NewEventList() (Action, error) {
 }
 
 // Process executes the event list action.
-func (action EventList) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	s.ChannelMessageSend(m.ChannelID, "Here are your events")
-	return nil
+func (action EventList) Process(s *discordgo.Session, m *discordgo.MessageCreate) (string, error) {
+	return "Here are your events", nil
 }

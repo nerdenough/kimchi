@@ -11,7 +11,6 @@ func NewEventRemove() (Action, error) {
 }
 
 // Process executes the event remove action.
-func (action EventRemove) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	s.ChannelMessageSend(m.ChannelID, "Removing your event")
-	return nil
+func (action EventRemove) Process(s *discordgo.Session, m *discordgo.MessageCreate) (string, error) {
+	return "Removing your event", nil
 }

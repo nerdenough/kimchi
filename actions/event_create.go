@@ -16,17 +16,15 @@ func NewEventCreate() (Action, error) {
 }
 
 // Process executes the event create action.
-func (action EventCreate) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	s.ChannelMessageSend(m.ChannelID, "Creating a new event")
-
+func (action EventCreate) Process(s *discordgo.Session, m *discordgo.MessageCreate) (string, error) {
 	// Find the event time
 	time, err := message.DecodeTime(m.Content)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	fmt.Printf("Time: %s\n", time)
 	// TODO get date and create event
 
-	return nil
+	return "Creating a new event", nil
 }

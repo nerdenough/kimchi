@@ -15,11 +15,11 @@ func NewSay() (Action, error) {
 }
 
 // Process executes the say action.
-func (action Say) Process(s *discordgo.Session, m *discordgo.MessageCreate) error {
-	reg := regexp.MustCompile(PatternMatchType["misc.say"])
-	msg := reg.ReplaceAllString(m.Content, "")
-	if msg != "" {
-		s.ChannelMessageSend(m.ChannelID, msg)
+func (action Say) Process(s *discordgo.Session, m *discordgo.MessageCreate) (string, error) {
+	reg, err := regexp.Compile(PatternMatchType["misc.say"])
+	if err != nil {
+		return "", err
 	}
-	return nil
+
+	return reg.ReplaceAllString(m.Content, ""), nil
 }
