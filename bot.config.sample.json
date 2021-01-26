@@ -1,0 +1,22 @@
+{
+  "token": "your-bot-token",
+  "logLevel": "info",
+  "customActions": [
+    {
+      "name": "I lost the game",
+      "type": "simpleChat",
+      "trigger": "the game",
+      "config": {
+        "responses": ["_Sigh..._ Thanks, {author}. I lost the game."]
+      }
+    },
+    {
+      "name": "motd",
+      "type": "simpleChat",
+      "trigger": "^!motd",
+      "config": {
+        "responses": ["Sometimes people are just stupid :man_shrugging:"]
+      }
+    }
+  ]
+}

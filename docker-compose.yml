@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  bot:
+    build:
+      context: .
+    volumes:
+      - ./bot.config.json:/go/src/app/bot.config.json
