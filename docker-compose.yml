@@ -2,7 +2,6 @@ version: "3"
 
 services:
   bot:
-    build:
-      context: .
+    image: nerdenough/kimchi
     volumes:
       - ./bot.config.json:/go/src/app/bot.config.json
